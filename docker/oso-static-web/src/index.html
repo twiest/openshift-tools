@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster Configurator</title>
+
+    <!-- PatternFly Styles -->
+    <link href="bower_components/patternfly/dist/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="bower_components/patternfly/dist/css/patternfly-additions.min.css" rel="stylesheet" media="screen, print">
+
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- PatternFly -->
+    <script src="bower_components/patternfly/dist/js/patternfly.min.js"></script>
+  </head>
+  <body>
+
+  <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script>
+    // Initialize Boostrap-select
+     $('.selectpicker').selectpicker();
+  </script>
+
+<script src="functions.js" ></script>
+
+  <div class="container">
+
+    <div class="page-header">
+      <h1>Cloud Configurator</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="cloud" class="required">Cloud</label>
+      </div>
+      <div class="col-sm-9">
+        <ul id="cloud" class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
+          <li><a data-toggle="tab" href="#gcp" onclick="set_cloud('gcp')">GCP</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <!-- BEGIN AWS Tab -->
+          <div id="aws" class="tab-pane fade in active">
+
+            <!-- BEGIN MAIN AWS FORM -->
+            <form id="aws_form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="aws_region" class="required">Region</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <select id="aws_region" class="selectpicker">
+                      <option>us-east-1</option>
+                      <option>us-east-2</option>
+                      <option>us-west-1</option>
+                      <option>us-west-2</option>
+                      <option>eu-west-1</option>
+                      <option>eu-central-1</option>
+                      <option>ap-northeast-1</option>
+                      <option>ap-northeast-2</option>
+                      <option>ap-southeast-1</option>
+                      <option>ap-southeast-2</option>
+                      <option>ap-south-1</option>
+                      <option>sa-east-1</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="aws_account" class="required">Account</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <input id="aws_account" type="text" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="aws_accountid" class="required">Account ID</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <input id="aws_accountid" type="text" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </form> <!-- END MAIN FORM -->
+          </div> <!-- END AWS Tab -->
+
+
+          <!-- BEGIN GCP Tab -->
+          <div id="gcp" class="tab-pane fade in">
+            <h3>GCP</h3>
+            <p>GCP Content</p>
+          </div>
+          <!-- END GCP Tab -->
+        </div>
+      </div>
+    </div>
+
+
+    <form id="cloud_config">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="clusterid" class="required">Cluster ID</label>
+          </div>
+          <div class="col-sm-4">
+            <input id="clusterid" type="text" class="form-control"></input>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="environment" class="required">Environment</label>
+          </div>
+          <div class="col-sm-4">
+            <select id="environment" class="selectpicker">
+              <option>Production</option>
+              <option>Staging</option>
+              <option>Integration</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="openshift_version" class="required">OpenShift Version</label>
+          </div>
+          <div class="col-sm-4">
+            <select id="openshift_version" class="selectpicker">
+              <option>3.2</option>
+              <option>3.3</option>
+              <option>3.4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="sdn_plugin" class="required">OpenShift SDN Plugin</label>
+          </div>
+          <div class="col-sm-4">
+            <select id="sdn_plugin" class="selectpicker">
+              <option>Subnet</option>
+              <option>Multitenant</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="authentication" class="required">Authentication</label>
+      </div>
+      <div class="col-sm-9">
+        <ul id="authentication" class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#googleauth" onclick="set_auth('google')">Google</a></li>
+          <li><a data-toggle="tab" href="#github" onclick="set_auth('github')">GitHub</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="googleauth" class="tab-pane fade in active">
+            <form id="auth_google_form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="auth_google_client_id" class="required">Client ID</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="auth_google_client_id" type="text" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="auth_google_client_secret" class="required">Client Secret</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="auth_google_client_secret" type="text" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="auth_google_hosted_domain" class="required">Hosted Domain</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="auth_google_hosted_domain" type="text" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+
+          <div id="github" class="tab-pane fade in">
+            <form id="auth_github_form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="auth_github_client_id" class="required">Client ID</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="auth_github_client_id" type="text" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="auth_github_client_secret" class="required">Client Secret</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="auth_github_client_secret" type="text" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-primary" onclick="generate_config()">Generate Config</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10">
+        <pre><p id=cluster_config /></pre>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- this is only for testing and should be removed at some point -->
+
+<script>
+function setTestingDefaults() {
+  $('#aws_region').val("us-east-1").change()
+  $('#aws_account').val("opstest")
+  $('#aws_accountid').val("999999999999")
+
+  $('#clusterid').val("opstest")
+  $('#environment').val("Staging").change()
+  $('#openshift_version').val("3.2").change()
+  $('#sdn_plugin').val("Subnet").change()
+
+  $('#auth_google_client_id').val("somenum-somehash.apps.googleusercontent.com")
+  $('#auth_google_client_secret').val("SOMERANDOMTOKENDATA")
+  $('#auth_google_hosted_domain').val("redhat.com")
+}
+</script>
+
+  <button type="button" class="btn btn-secondary" onclick="setTestingDefaults()">Set opstest Defaults</button>
+  </body>
+</html>

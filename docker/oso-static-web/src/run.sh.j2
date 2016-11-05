@@ -1,0 +1,15 @@
+#!/bin/bash -e
+{{ generated_header }}
+
+sudo echo -e "\nTesting sudo works...\n"
+
+echo -n "Running static-web... "
+sudo docker run -ti --rm --name oso-{{ base_os }}-static-web \
+    --privileged                                     \
+    -p 80:80                                         \
+    -p 443:443                                       \
+    -v /etc/localtime:/etc/localtime:ro              \
+    -v /sys:/sys:ro                                  \
+    -v /sys/fs/selinux                               \
+    -v /var/lib/docker/volumes/shared:/shared:rw     \
+    oso-{{ base_os }}-static-web $@

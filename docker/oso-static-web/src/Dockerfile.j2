@@ -1,0 +1,38 @@
+{{ generated_header }}
+# Example docker run command
+# docker run -p 10050:10050 -p 10051:10051 -p 80:80 -p 443:443 oso-rhel7-static-web
+# /usr/local/bin/start.sh will then start the mysqldb, zabbix, and httpd services.
+# Default login:password to Zabbix is Admin:zabbix
+
+{% if base_os == "rhel7" %}
+FROM oso-rhel7-ops-base:latest
+{% elif base_os == "centos7" %}
+FROM openshifttools/oso-centos7-ops-base:latest
+{% endif %}
+
+# Pause indefinitely if asked to do so.
+RUN test "$OO_PAUSE_ON_BUILD" = "true" && while true ; do sleep 10 ; done || :
+
+RUN yum install -y mod_ssl procps-ng node npm git && \
+    yum -y update && \
+    yum clean all
+
+ADD root/ /root/
+
+# Rhel 7.2 update
+ADD httpd.conf /etc/httpd/conf/
+RUN sed -i -e 's/^\(LoadModule auth_digest_module modules\/mod_auth_digest.so\)$/#\1/g' /etc/httpd/conf.modules.d/00-base.conf
+
+# Start apache
+ADD start.sh /usr/local/bin/
+CMD /usr/local/bin/start.sh
+
+# Configure Bower
+ADD bower.json /var/www/html/
+ADD index.html /var/www/html
+
+
+# DO NOT COMMIT THIS!!!!
+RUN npm install -g grunt-cli bower
+RUN cd /var/www/html/ && \
+    bower install patternfly --save --allow-root
