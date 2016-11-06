@@ -21,13 +21,8 @@
 </head>
 
 <body>
-
   <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-  <script>
-    // Initialize Boostrap-select
-    $('.selectpicker').selectpicker();
-  </script>
-
+  <script src="data.js"></script>
   <script src="functions.js"></script>
 
   <div class="container">
@@ -42,7 +37,7 @@
         <form id="cluster_config_form">
           <div class="form-group">
             <div class="row">
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <label for="clusterid" class="required">Cluster ID</label>
               </div>
               <div class="col-sm-4">
@@ -53,11 +48,11 @@
 
           <div class="form-group">
             <div class="row">
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <label for="environment" class="required">Environment</label>
               </div>
               <div class="col-sm-4">
-                <select id="environment" class="selectpicker">
+                <select id="environment" class="form-control">
               <option>Production</option>
               <option>Staging</option>
               <option>Integration</option>
@@ -68,11 +63,11 @@
 
           <div class="form-group">
             <div class="row">
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <label for="openshift_version" class="required">OpenShift Version</label>
               </div>
               <div class="col-sm-4">
-                <select id="openshift_version" class="selectpicker">
+                <select id="openshift_version" class="form-control">
               <option>3.2</option>
               <option>3.3</option>
               <option>3.4</option>
@@ -83,11 +78,11 @@
 
           <div class="form-group">
             <div class="row">
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <label for="sdn_plugin" class="required">OpenShift SDN Plugin</label>
               </div>
               <div class="col-sm-4">
-                <select id="sdn_plugin" class="selectpicker">
+                <select id="sdn_plugin" class="form-control">
               <option>Subnet</option>
               <option>Multitenant</option>
             </select>
@@ -101,117 +96,91 @@
 
 
     <div class="panel panel-default">
-      <div class="panel-heading">Cloud </div>
+      <div class="panel-heading">Cloud</div>
       <div class="panel-body">
-        <div class="col-sm-9">
-          <ul id="cloud" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
-            <li><a data-toggle="tab" href="#gcp" onclick="set_cloud('gcp')">GCP</a></li>
-          </ul>
+        <ul id="cloud" class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
+          <li><a data-toggle="tab" href="#gcp" onclick="set_cloud('gcp')">GCP</a></li>
+        </ul>
 
-          <div class="tab-content">
-            <div id="aws" class="tab-pane fade in active">
-              <form id="aws_form">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="aws_region" class="required">Region</label>
-                    </div>
-                    <div class="col-sm-2">
-                      <select id="aws_region" class="selectpicker">
-                        <option>us-east-1</option>
-                        <option>us-east-2</option>
-                        <option>us-west-1</option>
-                        <option>us-west-2</option>
-                        <option>eu-west-1</option>
-                        <option>eu-central-1</option>
-                        <option>ap-northeast-1</option>
-                        <option>ap-northeast-2</option>
-                        <option>ap-southeast-1</option>
-                        <option>ap-southeast-2</option>
-                        <option>ap-south-1</option>
-                        <option>sa-east-1</option>
+        <div class="tab-content">
+          <div id="aws" class="tab-pane fade in active">
+            <form id="aws_form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="aws_region" class="required">Region</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <select id="aws_region" class="form-control">
                       </select>
-                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="aws_account" class="required">Account</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <input id="aws_account" type="text" class="form-control"></input>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="aws_account" class="required">Account</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input id="aws_account" type="text" class="form-control"></input>
-                    </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="aws_accountid" class="required">Account ID</label>
                   </div>
-
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="aws_accountid" class="required">Account ID</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input id="aws_accountid" type="text" class="form-control"></input>
-                    </div>
+                  <div class="col-sm-4">
+                    <input id="aws_accountid" type="text" class="form-control"></input>
                   </div>
                 </div>
-              </form>
-              <!-- End aws form -->
-            </div>
-            <!-- End aws tab -->
-
-
-            <div id="gcp" class="tab-pane fade in">
-              <form id="gcp_form">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="gcp_region" class="required">Region</label>
-                    </div>
-                    <div class="col-sm-2">
-                      <select id="gcp_region" class="selectpicker">
-                        <option>us-east-1</option>
-                        <option>us-east-2</option>
-                        <option>us-west-1</option>
-                        <option>us-west-2</option>
-                        <option>eu-west-1</option>
-                        <option>eu-central-1</option>
-                        <option>ap-northeast-1</option>
-                        <option>ap-northeast-2</option>
-                        <option>ap-southeast-1</option>
-                        <option>ap-southeast-2</option>
-                        <option>ap-south-1</option>
-                        <option>sa-east-1</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="gcp_project" class="required">Project</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input id="gcp_project" type="text" class="form-control"></input>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="gcp_zone" class="required">Zone</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input id="gcp_zone" type="text" class="form-control"></input>
-                    </div>
-                  </div>
-                </div>
-              </form>
-              <!-- End gcp form -->
-
-            </div>
-            <!-- End gcp tab -->
+              </div>
+            </form>
+            <!-- End aws form -->
           </div>
+          <!-- End aws tab -->
+
+
+          <div id="gcp" class="tab-pane fade in">
+            <form id="gcp_form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="gcp_region" class="required">Region</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <select id="gcp_region" class="form-control">
+                      </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="gcp_project" class="required">Project</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <input id="gcp_project" type="text" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label for="gcp_zone" class="required">Zone</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <input id="gcp_zone" type="text" class="form-control"></input>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- End gcp form -->
+
+          </div>
+          <!-- End gcp tab -->
         </div>
       </div>
     </div>

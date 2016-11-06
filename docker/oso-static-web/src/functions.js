@@ -3,21 +3,24 @@ function normalize(value) {
 }
 
 function get_environment(env) {
+  var retval = "UNSET"
   switch (env) {
     case "Production":
-      env = "prod"
+      retval = "prod"
       break
     case "Staging":
-      env = "stg"
+      retval = "stg"
       break
     case "Integration":
-      env = "int"
+      retval = "int"
       break
   }
-  return env
+  return retval
 }
 
 function get_sdn_plugin(plugin) {
+  var retval = "UNSET"
+
   switch (plugin) {
     case "Subnet":
       retval = "redhat/openshift-ovs-subnet"
@@ -30,7 +33,7 @@ function get_sdn_plugin(plugin) {
 }
 
 function generate_config() {
-  config = "---\n"
+  var config = "---\n"
   switch (g_cloud) {
     case "aws":
       config += "g_location: aws\n"
@@ -98,21 +101,53 @@ function generate_config() {
     $('#cluster_config').text(config)
   }
 
-
+  // This is what makes dynamic update work
   window.setTimeout(generate_config, 100);
 }
 
-g_auth = "google"
 
 function set_auth(val) {
   g_auth = val
 }
+set_auth("google")
 
-g_cloud = "aws"
 
 function set_cloud(val) {
   g_cloud = val
 }
+set_cloud("aws")
 
 
-window.setTimeout(generate_config, 0);
+function set_aws_regions() {
+
+
+  // Ged rid of any existing options
+  var el = $("#aws_region")
+  el.empty()
+
+  for (ix in g_aws_regions) {
+    el.append("<option>" + g_aws_regions[ix] + "</option>")
+  }
+}
+
+function set_gcp_regions() {
+
+  // Ged rid of any existing options
+  var el = $("#gcp_region")
+  el.empty()
+
+  for (var key in g_gcp_regions) {
+    el.append("<option>" + key + "</option>")
+  }
+}
+
+function main() {
+  set_aws_regions()
+  set_gcp_regions()
+
+  window.setTimeout(generate_config, 0)
+}
+
+window.onload = function(e) {
+  main()
+}
