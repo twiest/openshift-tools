@@ -26,7 +26,7 @@
      $('.selectpicker').selectpicker();
   </script>
 
-<script src="functions.js" ></script>
+  <script src="functions.js" ></script>
 
   <div class="container">
 
@@ -34,75 +34,77 @@
       <h1>Cloud Configurator</h1>
     </div>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <label for="cloud" class="required">Cloud</label>
-      </div>
-      <div class="col-sm-9">
-        <ul id="cloud" class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
-          <li><a data-toggle="tab" href="#gcp" onclick="set_cloud('gcp')">GCP</a></li>
-        </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">Cloud </div>
+      <div class="panel-body">
 
-        <div class="tab-content">
-          <!-- BEGIN AWS Tab -->
-          <div id="aws" class="tab-pane fade in active">
 
-            <!-- BEGIN MAIN AWS FORM -->
-            <form id="aws_form">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <label for="aws_region" class="required">Region</label>
-                  </div>
-                  <div class="col-sm-2">
-                    <select id="aws_region" class="selectpicker">
-                      <option>us-east-1</option>
-                      <option>us-east-2</option>
-                      <option>us-west-1</option>
-                      <option>us-west-2</option>
-                      <option>eu-west-1</option>
-                      <option>eu-central-1</option>
-                      <option>ap-northeast-1</option>
-                      <option>ap-northeast-2</option>
-                      <option>ap-southeast-1</option>
-                      <option>ap-southeast-2</option>
-                      <option>ap-south-1</option>
-                      <option>sa-east-1</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+        <div class="col-sm-9">
+          <ul id="cloud" class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
+            <li><a data-toggle="tab" href="#gcp" onclick="set_cloud('gcp')">GCP</a></li>
+          </ul>
 
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <label for="aws_account" class="required">Account</label>
-                  </div>
-                  <div class="col-sm-4">
-                    <input id="aws_account" type="text" class="form-control"></input>
+          <div class="tab-content">
+            <!-- BEGIN AWS Tab -->
+            <div id="aws" class="tab-pane fade in active">
+
+              <!-- BEGIN MAIN AWS FORM -->
+              <form id="aws_form">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="aws_region" class="required">Region</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <select id="aws_region" class="selectpicker">
+                        <option>us-east-1</option>
+                        <option>us-east-2</option>
+                        <option>us-west-1</option>
+                        <option>us-west-2</option>
+                        <option>eu-west-1</option>
+                        <option>eu-central-1</option>
+                        <option>ap-northeast-1</option>
+                        <option>ap-northeast-2</option>
+                        <option>ap-southeast-1</option>
+                        <option>ap-southeast-2</option>
+                        <option>ap-south-1</option>
+                        <option>sa-east-1</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-sm-3">
-                    <label for="aws_accountid" class="required">Account ID</label>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="aws_account" class="required">Account</label>
+                    </div>
+                    <div class="col-sm-4">
+                      <input id="aws_account" type="text" class="form-control"></input>
+                    </div>
                   </div>
-                  <div class="col-sm-4">
-                    <input id="aws_accountid" type="text" class="form-control"></input>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="aws_accountid" class="required">Account ID</label>
+                    </div>
+                    <div class="col-sm-4">
+                      <input id="aws_accountid" type="text" class="form-control"></input>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form> <!-- END MAIN FORM -->
-          </div> <!-- END AWS Tab -->
+              </form> <!-- END MAIN FORM -->
+            </div> <!-- END AWS Tab -->
 
 
-          <!-- BEGIN GCP Tab -->
-          <div id="gcp" class="tab-pane fade in">
-            <h3>GCP</h3>
-            <p>GCP Content</p>
+            <!-- BEGIN GCP Tab -->
+            <div id="gcp" class="tab-pane fade in">
+              <h3>GCP</h3>
+              <p>GCP Content</p>
+            </div>
+            <!-- END GCP Tab -->
           </div>
-          <!-- END GCP Tab -->
         </div>
       </div>
     </div>
