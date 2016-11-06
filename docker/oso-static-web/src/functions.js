@@ -91,7 +91,13 @@ function generate_config() {
   }
 
 
-  $('#cluster_config').text(config)
+  if ($('#cluster_config').text() != config) {
+    // Only update if there is an update
+    $('#cluster_config').text(config)
+  }
+
+
+  window.setTimeout(generate_config, 100);
 }
 
 g_auth = "google"
@@ -105,3 +111,6 @@ g_cloud = "aws"
 function set_cloud(val) {
   g_cloud = val
 }
+
+
+window.setTimeout(generate_config, 0);
