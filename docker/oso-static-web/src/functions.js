@@ -3,30 +3,30 @@ function normalize(value) {
 }
 
 function get_environment(env) {
-    switch(env) {
-      case "Production":
-        env = "prod"
-        break
-      case "Staging":
-        env = "stg"
-        break
-      case "Integration":
-        env = "int"
-        break
-    }
-    return env
+  switch (env) {
+    case "Production":
+      env = "prod"
+      break
+    case "Staging":
+      env = "stg"
+      break
+    case "Integration":
+      env = "int"
+      break
+  }
+  return env
 }
 
 function get_sdn_plugin(plugin) {
-    switch(plugin) {
-      case "Subnet":
-        retval = "redhat/openshift-ovs-subnet"
-        break
-      case "Multitenant":
-        retval = "redhat/openshift-ovs-multitenant"
-        break
-    }
-    return retval
+  switch (plugin) {
+    case "Subnet":
+      retval = "redhat/openshift-ovs-subnet"
+      break
+    case "Multitenant":
+      retval = "redhat/openshift-ovs-multitenant"
+      break
+  }
+  return retval
 }
 
 function generate_config() {
@@ -41,7 +41,7 @@ function generate_config() {
 
     case "gcp":
       config += "g_location: gcp\n"
-      // TODO: add gcp data
+        // TODO: add gcp data
       break
   }
 
@@ -82,11 +82,11 @@ function generate_config() {
       config += "        clientID: " + normalize($('#auth_github_client_id').val()) + "\n"
       config += "        clientSecret: " + normalize($('#auth_github_client_secret').val()) + "\n"
 
-/* TODO: add orgs for github
-    organizations:
-    - myorganization1
-    - myorganization2
-*/
+      /* TODO: add orgs for github
+          organizations:
+          - myorganization1
+          - myorganization2
+      */
       break
   }
 
@@ -95,11 +95,13 @@ function generate_config() {
 }
 
 g_auth = "google"
+
 function set_auth(val) {
   g_auth = val
 }
 
 g_cloud = "aws"
+
 function set_cloud(val) {
   g_cloud = val
 }
