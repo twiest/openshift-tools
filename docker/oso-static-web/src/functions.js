@@ -41,7 +41,9 @@ function generate_config() {
 
     case "gcp":
       config += "g_location: gcp\n"
-        // TODO: add gcp data
+      config += "g_gcp_project: " + normalize($('#gcp_project').val()) + "\n"
+      config += "g_gcp_region: " + normalize($('#gcp_region').val()) + "\n"
+      config += "g_gcp_zone: " + normalize($('#gcp_zone').val()) + "\n"
       break
   }
 

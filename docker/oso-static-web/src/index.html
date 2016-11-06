@@ -100,10 +100,6 @@
     <!-- End General panel -->
 
 
-
-
-
-
     <div class="panel panel-default">
       <div class="panel-heading">Cloud </div>
       <div class="panel-body">
@@ -114,10 +110,7 @@
           </ul>
 
           <div class="tab-content">
-            <!-- BEGIN AWS Tab -->
             <div id="aws" class="tab-pane fade in active">
-
-              <!-- BEGIN MAIN AWS FORM -->
               <form id="aws_form">
                 <div class="form-group">
                   <div class="row">
@@ -163,24 +156,66 @@
                   </div>
                 </div>
               </form>
-              <!-- END MAIN FORM -->
+              <!-- End aws form -->
             </div>
-            <!-- END AWS Tab -->
+            <!-- End aws tab -->
 
 
-            <!-- BEGIN GCP Tab -->
             <div id="gcp" class="tab-pane fade in">
-              <h3>GCP</h3>
-              <p>GCP Content</p>
+              <form id="gcp_form">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="gcp_region" class="required">Region</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <select id="gcp_region" class="selectpicker">
+                        <option>us-east-1</option>
+                        <option>us-east-2</option>
+                        <option>us-west-1</option>
+                        <option>us-west-2</option>
+                        <option>eu-west-1</option>
+                        <option>eu-central-1</option>
+                        <option>ap-northeast-1</option>
+                        <option>ap-northeast-2</option>
+                        <option>ap-southeast-1</option>
+                        <option>ap-southeast-2</option>
+                        <option>ap-south-1</option>
+                        <option>sa-east-1</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="gcp_project" class="required">Project</label>
+                    </div>
+                    <div class="col-sm-4">
+                      <input id="gcp_project" type="text" class="form-control"></input>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="gcp_zone" class="required">Zone</label>
+                    </div>
+                    <div class="col-sm-4">
+                      <input id="gcp_zone" type="text" class="form-control"></input>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- End gcp form -->
+
             </div>
-            <!-- END GCP Tab -->
+            <!-- End gcp tab -->
           </div>
         </div>
       </div>
     </div>
     <!-- End Cloud panel -->
-
-
 
 
     <div class="panel panel-default">
