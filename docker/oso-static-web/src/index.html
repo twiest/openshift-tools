@@ -39,8 +39,6 @@
     <div class="panel panel-default">
       <div class="panel-heading">Cloud </div>
       <div class="panel-body">
-
-
         <div class="col-sm-9">
           <ul id="cloud" class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#aws" onclick="set_cloud('aws')">AWS</a></li>
@@ -113,63 +111,70 @@
       </div>
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">General</div>
+      <div class="panel-body">
 
-    <form id="cloud_config">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="clusterid" class="required">Cluster ID</label>
-          </div>
-          <div class="col-sm-4">
-            <input id="clusterid" type="text" class="form-control"></input>
-          </div>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="environment" class="required">Environment</label>
+
+        <form id="cluster_config_form">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="clusterid" class="required">Cluster ID</label>
+              </div>
+              <div class="col-sm-4">
+                <input id="clusterid" type="text" class="form-control"></input>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-4">
-            <select id="environment" class="selectpicker">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="environment" class="required">Environment</label>
+              </div>
+              <div class="col-sm-4">
+                <select id="environment" class="selectpicker">
               <option>Production</option>
               <option>Staging</option>
               <option>Integration</option>
             </select>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="openshift_version" class="required">OpenShift Version</label>
-          </div>
-          <div class="col-sm-4">
-            <select id="openshift_version" class="selectpicker">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="openshift_version" class="required">OpenShift Version</label>
+              </div>
+              <div class="col-sm-4">
+                <select id="openshift_version" class="selectpicker">
               <option>3.2</option>
               <option>3.3</option>
               <option>3.4</option>
             </select>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="sdn_plugin" class="required">OpenShift SDN Plugin</label>
-          </div>
-          <div class="col-sm-4">
-            <select id="sdn_plugin" class="selectpicker">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="sdn_plugin" class="required">OpenShift SDN Plugin</label>
+              </div>
+              <div class="col-sm-4">
+                <select id="sdn_plugin" class="selectpicker">
               <option>Subnet</option>
               <option>Multitenant</option>
             </select>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
 
     <div class="row">
       <div class="col-sm-3">
